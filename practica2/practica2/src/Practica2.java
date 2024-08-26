@@ -121,7 +121,7 @@ public class Practica2 {
      */
     public static int sumaElementos(int[] arreglo) {
         int suma=0;
-        for(int i; i < arreglo.length; i++){
+        for(int i==0; i < arreglo.length; i++){
             suma+=arreglo[i];
         }
         return suma;
@@ -162,7 +162,7 @@ public class Practica2 {
      */
     public static int encuentraMinimo(int[] arreglo) {
         int minimo=0;
-        for(int i; i < arreglo.length; i++){
+        for(int i=0; i < arreglo.length; i++){
             if(minimo==0 || minimo>arreglo[i]){
                 minimo=arreglo[i];
             }
@@ -184,7 +184,13 @@ public class Practica2 {
      *         0.7 pts : Si tu algoritmo tiene una complejidad de O(n^2).
      */
     public static int contarOcurrencias(int[] arreglo, int elemento) {
-
+        int contador=0;
+        for(int i=0; i < arreglo.length; i++){
+            if(arreglo[i]==elemento){
+                contador++;
+            }
+        }
+        return contador;
     }
 
     /**
