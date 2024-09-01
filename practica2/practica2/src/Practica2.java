@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Practica2 {
     /**
      * Encuentra el valor máximo en un arreglo de números enteros.
@@ -12,15 +14,14 @@ public class Practica2 {
      *         0.7 pts : Si tu algoritmo tiene una complejidad de O(n^2).
      */
     public static int encuentraMaximo(int[] arreglo) {
-        int maximo=arreglo[0];
-        for(int i=0; i < arreglo.length; i++){
-            if(maximo<arreglo[i]){
-                maximo=arreglo[i];
+        int maximo = arreglo[0];
+        for (int i = 1; i < arreglo.length; i++) {
+            if (maximo < arreglo[i]) {
+                maximo = arreglo[i];
             }
         }
-        return arreglo;
+        return maximo;
     }
-
     /**
      * Ordena un arreglo de números enteros en orden ascendente.
      * 
@@ -34,57 +35,40 @@ public class Practica2 {
      *         0.7 pts : Si tu algoritmo tiene una complejidad de O(n^2).
      */
     public static int[] ordenarArreglo(int[] arreglo) {
-            if (arreglo.length <= 1){
-                return arreglo;
-            } 
-
-            int medio = arreglo.length / 2; 
-
-            // Dividir el arreglo en dos mitades
-            int[] izquierda = new int[medio]; 
-            int[] derecha = new int[arreglo.length - medio];
-        
-            // Copiar los elementos a los subarreglos
-            for (int i = 0; i < medio; i++) { 
-                izquierda[i] = arreglo[i];
-            }
-            for (int i = medio; i < arreglo.length; i++) { 
-                derecha[i - medio] = arreglo[i];
-            } 
-        
-            // Ordenar cada mitad recursivamente
-            izquierda = ordenarArreglo(izquierda);
-            derecha = ordenarArreglo(derecha);
-        
-            // Mezclar las mitades ordenadas
-            return mezclar(izquierda, derecha);
+        if (arreglo.length <= 1) {
+            return arreglo;
         }
-        
-        private static int[] mezclar(int[] izquierda, int[] derecha) {
-            int[] resultado = new int[izquierda.length + derecha.length];
-            int i = 0, j = 0, k = 0;
-        
-            // Mezclar los elementos de izquierda y derecha en orden
-            while (i < izquierda.length && j < derecha.length) {
-                if (izquierda[i] <= derecha[j]) {
-                    resultado[k++] = izquierda[i++];
-                } else {
-                    resultado[k++] = derecha[j++];
-                }
-            }
-
-            // Copiar los elementos restantes de izquierda (si los hay)
-            while (i < izquierda.length) {
+        int medio = arreglo.length / 2;
+        int[] izquierda = new int[medio];
+        int[] derecha = new int[arreglo.length - medio];
+        for (int i = 0; i < medio; i++) {
+            izquierda[i] = arreglo[i];
+        }
+        for (int i = medio; i < arreglo.length; i++) {
+            derecha[i - medio] = arreglo[i];
+        }
+        izquierda = ordenarArreglo(izquierda);
+        derecha = ordenarArreglo(derecha);
+        return mezclar(izquierda, derecha);
+    }
+    private static int[] mezclar(int[] izquierda, int[] derecha) {
+        int[] resultado = new int[izquierda.length + derecha.length];
+        int i = 0, j = 0, k = 0;
+        while (i < izquierda.length && j < derecha.length) {
+            if (izquierda[i] <= derecha[j]) {
                 resultado[k++] = izquierda[i++];
-            }
-        
-            // Copiar los elementos restantes de derecha (si los hay)
-            while (j < derecha.length) {
+            } else {
                 resultado[k++] = derecha[j++];
             }
-
-            return resultado; 
         }
+        while (i < izquierda.length) {
+            resultado[k++] = izquierda[i++];
+        }
+        while (j < derecha.length) {
+            resultado[k++] = derecha[j++];
+        }
+        return resultado;
+    }
     /**
      * Busca un elemento en un arreglo ordenado de números enteros.
      * 
@@ -100,20 +84,18 @@ public class Practica2 {
      *         0.7 pts : Si tu algoritmo tiene una complejidad de O(n).
      */
     public static boolean buscarElementoOrdenado(int[] arreglo, int elemento) {
-        int inicio = 0;
-        int fin = arreglo.length - 1;
+        int inicio = 0, fin = arreglo.length - 1;
         while (inicio <= fin) {
             int medio = inicio + (fin - inicio) / 2;
             if (arreglo[medio] == elemento) {
                 return true;
-            }
-            if (arreglo[medio] < elemento) {
+            } else if (arreglo[medio] < elemento) {
                 inicio = medio + 1;
             } else {
                 fin = medio - 1;
-            } 
+            }
         }
-        return false;  // Complejidad: O(log(n)) usando busqueda binaria 
+        return false;
     }
 
     /**
@@ -129,12 +111,11 @@ public class Practica2 {
      *         0.7 pts : Si tu algoritmo tiene una complejidad de O(n^2).
      */
     public static int sumaElementos(int[] arreglo) {
-        int suma=0;
-        for(int i==0; i < arreglo.length; i++){
-            suma+=arreglo[i];
+        int suma = 0;
+        for (int i = 0; i < arreglo.length; i++) {
+            suma += arreglo[i];
         }
         return suma;
-
     }
 
     /**
@@ -150,9 +131,9 @@ public class Practica2 {
      *         0.7 pts : Si tu algoritmo tiene una complejidad de O(n^2).
      */
     public static int[] invierteArreglo(int[] arreglo) {
-        int[] arreglo_invertido;
-        for(int i=0;i<arreglo.length;i++){
-            arreglo_invertido[arreglo.length-1-i]=arreglo[i];
+        int[] arreglo_invertido = new int[arreglo.length];
+        for (int i = 0; i < arreglo.length; i++) {
+            arreglo_invertido[arreglo.length - 1 - i] = arreglo[i];
         }
         return arreglo_invertido;
     }
@@ -170,10 +151,10 @@ public class Practica2 {
      *         0.7 pts : Si tu algoritmo tiene una complejidad de O(n^2).
      */
     public static int encuentraMinimo(int[] arreglo) {
-        int minimo=0;
-        for(int i=0; i < arreglo.length; i++){
-            if(minimo==0 || minimo>arreglo[i]){
-                minimo=arreglo[i];
+        int minimo = arreglo[0];
+        for (int i = 1; i < arreglo.length; i++) {
+            if (minimo > arreglo[i]) {
+                minimo = arreglo[i];
             }
         }
         return minimo;
@@ -193,9 +174,9 @@ public class Practica2 {
      *         0.7 pts : Si tu algoritmo tiene una complejidad de O(n^2).
      */
     public static int contarOcurrencias(int[] arreglo, int elemento) {
-        int contador=0;
-        for(int i=0; i < arreglo.length; i++){
-            if(arreglo[i]==elemento){
+        int contador = 0;
+        for (int i = 0; i < arreglo.length; i++) {
+            if (arreglo[i] == elemento) {
                 contador++;
             }
         }
@@ -215,13 +196,15 @@ public class Practica2 {
      *         0.7 pts : Si tu algoritmo tiene una complejidad de O(n^2).
      */
     public static int encuentraSegundoMaximo(int[] arreglo) {
-        maximo1=arreglo[0];
-        maximo2=arreglo[0];
-        for (int i=0; i<arreglo.length; i++){
-            if(arreglo[i] > maximo1){
+        if (arreglo.length < 2) {
+            return Integer.MIN_VALUE;
+        }
+        int maximo1 = arreglo[0], maximo2 = Integer.MIN_VALUE;
+        for (int i = 1; i < arreglo.length; i++) {
+            if (arreglo[i] > maximo1) {
                 maximo2 = maximo1;
                 maximo1 = arreglo[i];
-            } else if(arreglo[i] > maximo2 && arreglo[i]!= maximo1){
+            } else if (arreglo[i] > maximo2 && arreglo[i] != maximo1) {
                 maximo2 = arreglo[i];
             }
         }
@@ -242,13 +225,12 @@ public class Practica2 {
      *         0.7 pts : Si tu algoritmo tiene una complejidad de O(n^2).
      */
     public static boolean estaOrdenado(int[] arreglo) {
-        for(int i=0; i<arreglo.length-1; i++){
-            if(arreglo[i] < arreglo[i+1]){
+        for (int i = 0; i < arreglo.length - 1; i++) {
+            if (arreglo[i] > arreglo[i + 1]) {
                 return false;
             }
         }
         return true;
-
     }
 
     /**
@@ -267,24 +249,22 @@ public class Practica2 {
         int n = arreglo.length;
         int[] resultado = new int[n];
         int indiceResultado = 0;
-    
-        // Recorrer todo el arreglo
         for (int i = 0; i < n; i++) {
             boolean esDuplicado = false;
-            // Verificar si el elemento actual ya está en el resultado
             for (int j = 0; j < indiceResultado; j++) {
                 if (arreglo[i] == resultado[j]) {
                     esDuplicado = true;
                     break;
                 }
             }
-            // Si no es duplicado, agregar al resultado
             if (!esDuplicado) {
                 resultado[indiceResultado++] = arreglo[i];
             }
         }
-    
-        // Crear un nuevo arreglo con solo los elementos únicos
-        return Arrays.copyOf(resultado, indiceResultado);
+        int[] arrayFinal = new int[indiceResultado];
+        for (int i = 0; i < indiceResultado; i++) {
+            arrayFinal[i] = resultado[i];
+        }
+        return arrayFinal;
     }
-    
+}
