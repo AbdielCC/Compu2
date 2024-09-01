@@ -34,48 +34,57 @@ public class Practica2 {
      *         0.7 pts : Si tu algoritmo tiene una complejidad de O(n^2).
      */
     public static int[] ordenarArreglo(int[] arreglo) {
-        if (arreglo.length <= 1) {
-            return arreglo; // Un arreglo de longitud 1 o 0 ya está ordenado
+            if (arreglo.length <= 1){
+                return arreglo;
+            } 
+
+            int medio = arreglo.length / 2; 
+
+            // Dividir el arreglo en dos mitades
+            int[] izquierda = new int[medio]; 
+            int[] derecha = new int[arreglo.length - medio];
+        
+            // Copiar los elementos a los subarreglos
+            for (int i = 0; i < medio; i++) { 
+                izquierda[i] = arreglo[i];
+            }
+            for (int i = medio; i < arreglo.length; i++) { 
+                derecha[i - medio] = arreglo[i];
+            } 
+        
+            // Ordenar cada mitad recursivamente
+            izquierda = ordenarArreglo(izquierda);
+            derecha = ordenarArreglo(derecha);
+        
+            // Mezclar las mitades ordenadas
+            return mezclar(izquierda, derecha);
         }
         
-        // Merge Sort
-        int mitad = arreglo.length / 2;
-        int[] izquierda = Arrays.copyOfRange(arreglo, 0, mitad);
-        int[] derecha = Arrays.copyOfRange(arreglo, mitad, arreglo.length);
-    
-        izquierda = ordenarArreglo(izquierda);
-        derecha = ordenarArreglo(derecha);
-    
-        return merge(izquierda, derecha);
-    }
-    
-    private static int[] merge(int[] izquierda, int[] derecha) {
-        int[] resultado = new int[izquierda.length + derecha.length];
-        int i = 0, j = 0, k = 0;
+        private static int[] mezclar(int[] izquierda, int[] derecha) {
+            int[] resultado = new int[izquierda.length + derecha.length];
+            int i = 0, j = 0, k = 0;
         
-        // Combinar los arreglos izquierda y derecha en orden ascendente
-        while (i < izquierda.length && j < derecha.length) {
-            if (izquierda[i] <= derecha[j]) {
+            // Mezclar los elementos de izquierda y derecha en orden
+            while (i < izquierda.length && j < derecha.length) {
+                if (izquierda[i] <= derecha[j]) {
+                    resultado[k++] = izquierda[i++];
+                } else {
+                    resultado[k++] = derecha[j++];
+                }
+            }
+
+            // Copiar los elementos restantes de izquierda (si los hay)
+            while (i < izquierda.length) {
                 resultado[k++] = izquierda[i++];
-            } else {
+            }
+        
+            // Copiar los elementos restantes de derecha (si los hay)
+            while (j < derecha.length) {
                 resultado[k++] = derecha[j++];
             }
-        }
-        
-        // Copiar los elementos restantes de izquierda, si hay
-        while (i < izquierda.length) {
-            resultado[k++] = izquierda[i++];
-        }
-    
-        // Copiar los elementos restantes de derecha, si hay
-        while (j < derecha.length) {
-            resultado[k++] = derecha[j++];
-        }
-    
-        return resultado;
-    }
-    
 
+            return resultado; 
+        }
     /**
      * Busca un elemento en un arreglo ordenado de números enteros.
      * 
