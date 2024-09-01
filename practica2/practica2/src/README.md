@@ -1,4 +1,5 @@
 <div style="background-image: url('https://img.freepik.com/fotos-premium/personaje-anime-cabello-blanco-traje-negro-pie-frente-fondo-oscuro-generativo-ai_902846-115203.jpg'); padding: 20px;">
+
 # Practica2
 
 <audio controls>
