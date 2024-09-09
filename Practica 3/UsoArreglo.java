@@ -21,14 +21,14 @@ public class UsoArreglo {
         System.out.println("Contenido inicial del arreglo 2D: \n" + arreglo2D.mostrarArreglo2D(arreglo2D, 3, 3));
         
         // Establecer valores en el arreglo 2D usando Vectores de Iliffe
-        arreglo2D.establecer(1, 0, 0);
-        arreglo2D.establecer(2, 1, 1);
-        arreglo2D.establecer(3, 2, 2);
+        arreglo2D.setArreglo(1, 0, 0);
+        arreglo2D.setArreglo(2, 1, 1);
+        arreglo2D.setArreglo(3, 2, 2);
         
-        // Obtener y mostrar valores del arreglo 2D después de establecer elementos
-        System.out.println("Valor en [0,0]: " + arreglo2D.obtener(0, 0));
-        System.out.println("Valor en [1,1]: " + arreglo2D.obtener(1, 1));
-        System.out.println("Valor en [2,2]: " + arreglo2D.obtener(2, 2));
+        // Obtener y mostrar valores del arreglo 2D después de setArreglo elementos
+        System.out.println("Valor en [0,0]: " + arreglo2D.getArreglo(0, 0));
+        System.out.println("Valor en [1,1]: " + arreglo2D.getArreglo(1, 1));
+        System.out.println("Valor en [2,2]: " + arreglo2D.getArreglo(2, 2));
         System.out.println("Contenido del arreglo 2D después de agregar elementos: \n" + arreglo2D.mostrarArreglo2D(arreglo2D, 3, 3));
     }
 }
