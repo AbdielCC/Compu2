@@ -118,7 +118,7 @@ public class Arreglo<T> implements Coleccion<T> {
     @SuppressWarnings("unchecked")
     public T getArreglo(int... indices) {
         if (indices.length != dimensiones.length) {
-            throw new IndexOutOfBoundsException("Número incorrecto de índices");
+            throw new IndexOutOfBoundsException("Numero incorrecto de indices");
         }
         Object actual = iliffeVector;
         for (int i = 0; i < indices.length; i++) {
@@ -127,12 +127,12 @@ public class Arreglo<T> implements Coleccion<T> {
         return (T) actual;
     }
 
-    // Métodos para manejo de arreglos unidimensionales y otros métodos de la clase
+    // Metodos para manejo de arreglos unidimensionales y otros metodos de la clase
 
     @Override
     public void agregar(T elemento) {
         if (longitud >= elementos.length) {
-            throw new IllegalStateException("El arreglo está lleno");
+            throw new IllegalStateException("El arreglo esta lleno");
         }
         elementos[longitud++] = elemento;
     }
@@ -140,7 +140,7 @@ public class Arreglo<T> implements Coleccion<T> {
     @Override
     public T eliminar() {
         if (longitud == 0) {
-            throw new NoSuchElementException("El arreglo está vacío");
+            throw new NoSuchElementException("El arreglo esta vacio");
         }
         T elemento = elementos[--longitud];
         elementos[longitud] = null;
