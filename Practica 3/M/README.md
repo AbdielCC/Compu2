@@ -15,7 +15,7 @@
 | Nombre | Numero de cuenta |
 | --- | --- |
 | Cabello Cardenas Ulises Abdiel | 318075752 |
-| Alan Blancas Ochoa | |
+| Alan Blancas Ochoa | 316227364 |
 
 ## Explicacion del codigo
 ### Constructor de arreglo unidimensional
