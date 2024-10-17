@@ -7,6 +7,7 @@
 | Cabello Cárdenas Ulises Abdiel | 318075752 |
 | Alan Blancas Ochoa | 316227364 |
 ## Implementaciones de la practica
+Este proyecto implementa estructuras de datos de **pilas** y **colas**. Además, se incluye una implementación de una calculadora básica que realiza operaciones aritméticas en notación postfija utilizando una pila.
 - Node.py
 ```py
 class Node:
