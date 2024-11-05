@@ -18,4 +18,9 @@ for id_empleado, fecha in empleados:
 
 # Imprimir el árbol en postorden
 print("Jerarquía de empleados (Postorden):")
+print("postorden")
 arbol_avl.postorden(raiz)
+print("preorden")
+arbol_avl.preorden(raiz)
+print("inorden")
+arbol_avl.inorden(raiz)

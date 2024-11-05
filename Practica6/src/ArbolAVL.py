@@ -122,3 +122,15 @@ class ArbolAVL:
         self.postorden(nodo.izquierda)
         self.postorden(nodo.derecha)
         print(f"ID Empleado: {nodo.id_empleado}, Fecha Antigüedad: {nodo.fecha_antiguedad.strftime('%Y-%m-%d')}")
+    def inorden(self, nodo):
+        if not nodo:
+            return
+        self.inorden(nodo.izquierda)
+        print(f"ID Empleado: {nodo.id_empleado}, Fecha Antigüedad: {nodo.fecha_antiguedad.strftime('%Y-%m-%d')}")
+        self.inorden(nodo.derecha)
+    def preorden(self, nodo):
+        if not nodo:
+            return
+        print(f"ID Empleado: {nodo.id_empleado}, Fecha Antigüedad: {nodo.fecha_antiguedad.strftime('%Y-%m-%d')}")
+        self.preorden(nodo.izquierda)
+        self.preorden(nodo.derecha)
